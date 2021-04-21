@@ -12,7 +12,10 @@ namespace ariel
             double value;
             std::string unit;
 
-            NumberWithUnits(double new_value, std::string new_unit){};
+            NumberWithUnits(double new_value, std::string new_unit){
+                this->value = new_value;
+                this->unit = new_unit;
+            }
                        
             static void read_units(std::ifstream &file_name);
    
@@ -20,15 +23,15 @@ namespace ariel
             friend NumberWithUnits operator+(const NumberWithUnits& first, const NumberWithUnits& second);
             NumberWithUnits& operator+=(const NumberWithUnits& other);
 
-            NumberWithUnits& operator++();
-            NumberWithUnits& operator++(int);
+            NumberWithUnits& operator++(); //prefix
+            NumberWithUnits& operator++(int); //postfix
 
             friend NumberWithUnits operator-(NumberWithUnits& num);
             friend NumberWithUnits operator-(const NumberWithUnits& first, const NumberWithUnits& second);
             NumberWithUnits& operator-=(const NumberWithUnits& other);
 
-            NumberWithUnits& operator--();
-            NumberWithUnits& operator--(int);
+            NumberWithUnits& operator--(); //prefix
+            NumberWithUnits& operator--(int); //postfix
            
 
             friend NumberWithUnits operator*(const NumberWithUnits& num_u, double num);

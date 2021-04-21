@@ -59,8 +59,24 @@ TEST_CASE("comparison operators"){
 }
 
 TEST_CASE("input/output operators"){
-    NumberWithUnits number1(120,"cm");
-    NumberWithUnits number2(230,"g");
+    NumberWithUnits number1(342.6,"kg");
+    NumberWithUnits number2(45,"min");
+
+    stringstream out1;
+    out1 << number1;
+    CHECK_EQ(out1.str(), "342.6[kg]");
+
+    stringstream out2;
+    out2 << number2;
+    CHECK_EQ(out2.str(), "45[min]");
+
+    istringstream in1("123[ILS]");
+    in1 >> number1;
+    CHECK_EQ(number1, NumberWithUnits(123,"ILS"));
+    
+    stringstream in2("44.67[USD]");
+    in2 >> number2;
+    CHECK_EQ(number2, NumberWithUnits(44.67,"USD"));
 }
 
 TEST_CASE("exeptions"){

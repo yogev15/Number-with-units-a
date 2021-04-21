@@ -105,8 +105,8 @@ namespace ariel{
         << >>
     **************************************************************************/
     istream& operator>>(istream& input, NumberWithUnits& num){
-        string s;
-        input >> num.value >> s >> num.unit;
+        string str;
+        input >> num.value >> str >> num.unit;
         return input;
     }
 
